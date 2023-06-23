@@ -2,10 +2,6 @@
 //Чтение файла
 string text = File.ReadAllText("text1.txt");
 
-//Создание листов для тестирования
-List<char> lstChar = new List<char>();
-LinkedList<char> linkedListChar = new LinkedList<char>();
-
 //Запуск методов тестирования 
 TestListPertfomance();
 TestLinkedListPertfomance();
@@ -13,21 +9,24 @@ TestLinkedListPertfomance();
 //Метод для тестирования простого листа
 void TestListPertfomance()
 {
+    List<char> simpleListChar = new List<char>();
     Stopwatch stopWatch = Stopwatch.StartNew();
     foreach (char ch in text)
     {
-        lstChar.Add(ch);
+        simpleListChar.Add(ch);
     }
-    Console.WriteLine(stopWatch.ElapsedMilliseconds); 
+
+    Console.WriteLine($"Время, потраченное на добавление {simpleListChar.Count} символов в простой лист - {stopWatch.ElapsedMilliseconds} милисекунд.");
 }
 
 //Метод для тестирования связанного листа
 void TestLinkedListPertfomance()
 {
+    LinkedList<char> linkedListChar = new LinkedList<char>();
     Stopwatch stopWatch = Stopwatch.StartNew();
     foreach (char ch in text)
     {
         linkedListChar.AddLast(ch);
     }
-    Console.WriteLine(stopWatch.ElapsedMilliseconds); 
+    Console.WriteLine($"Время, потраченное на добавление {linkedListChar.Count} символов в связанный лист - {stopWatch.ElapsedMilliseconds} милисекунд.");
 }
